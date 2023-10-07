@@ -9,14 +9,21 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.example.lab1.R
+import java.util.Random
 
 @Composable
 fun MainScreen() {
+    var quoteIndex by remember {
+        mutableStateOf(0)
+    }
     val context = LocalContext.current
     val quotes: Array<String> = context.resources.getStringArray(R.array.quotes)
 
@@ -27,10 +34,12 @@ fun MainScreen() {
             .padding(horizontal = 32.dp)
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(text = quotes[0])
+            Text(text = quotes[quoteIndex])
             Spacer(modifier = Modifier.height(8.dp))
-            Button(onClick = {}) {
-                Text("Test button")
+            Button(onClick = {
+                quoteIndex = Random().nextInt(quotes.size)
+            }) {
+                Text("Показати нову цитату")
             }
         }
     }
