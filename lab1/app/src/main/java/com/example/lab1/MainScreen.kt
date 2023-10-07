@@ -17,6 +17,9 @@ import com.example.lab1.R
 
 @Composable
 fun MainScreen() {
+    val context = LocalContext.current
+    val quotes: Array<String> = context.resources.getStringArray(R.array.quotes)
+
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
@@ -24,7 +27,7 @@ fun MainScreen() {
             .padding(horizontal = 32.dp)
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(text = "Test text")
+            Text(text = quotes[0])
             Spacer(modifier = Modifier.height(8.dp))
             Button(onClick = {}) {
                 Text("Test button")
