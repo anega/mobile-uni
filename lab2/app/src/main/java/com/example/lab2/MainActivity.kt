@@ -16,6 +16,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
+import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -23,12 +24,14 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.lab2.screens.GalleryScreen
 import com.example.lab2.screens.HomeScreen
@@ -51,6 +54,8 @@ class MainActivity : ComponentActivity() {
                 drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
                 scope = rememberCoroutineScope();
                 navController = rememberNavController();
+                val currentNavBackStackEntry by navController.currentBackStackEntryAsState()
+                val currentRoute = currentNavBackStackEntry?.destination?.route ?: "home"
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -60,10 +65,36 @@ class MainActivity : ComponentActivity() {
                         drawerState = drawerState,
                         drawerContent = {
                             ModalDrawerSheet {
-                                Text(text = "Drawer content")
-                                Text(text = "Drawer content")
-                                Text(text = "Drawer content")
-                                Text(text = "Drawer content")
+                                NavigationDrawerItem(
+                                    label = { Text(text = "Home") },
+                                    selected = currentRoute == "home",
+                                    onClick = {
+                                        navController.navigate("home") {
+                                            popUpTo("home")
+                                        }
+                                        scope.launch { drawerState.close() }
+                                    })
+                                NavigationDrawerItem(
+                                    label = { Text(text = "Gallery") },
+                                    selected = currentRoute == "gallery",
+                                    onClick = {
+                                        navController.navigate("gallery") {
+                                            launchSingleTop = true
+                                            restoreState = true
+                                        }
+                                        scope.launch { drawerState.close() }
+                                    })
+                                NavigationDrawerItem(
+                                    label = { Text(text = "Slideshow")},
+                                    selected = currentRoute == "slideshow",
+                                    onClick = {
+                                        navController.navigate("slideshow") {
+                                            launchSingleTop = true
+                                            restoreState = true
+                                        }
+                                        scope.launch { drawerState.close() }
+                                    }
+                                )
                             }
                         }) {
                         Scaffold(
@@ -76,7 +107,7 @@ class MainActivity : ComponentActivity() {
                                     ),
                                     navigationIcon = {
                                         IconButton(
-                                            onClick = { scope.launch { drawerState.open() }},
+                                            onClick = { scope.launch { drawerState.open() } },
                                             content = {
                                                 Icon(
                                                     imageVector = Icons.Default.Menu,
