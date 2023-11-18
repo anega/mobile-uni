@@ -26,6 +26,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.lab2.screens.GalleryScreen
+import com.example.lab2.screens.HomeScreen
+import com.example.lab2.screens.SlideshowScreen
 import com.example.lab2.ui.theme.Lab2Theme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -34,6 +41,7 @@ class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     private lateinit var drawerState: DrawerState;
     private lateinit var scope: CoroutineScope;
+    private lateinit var navController: NavHostController;
 
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +50,7 @@ class MainActivity : ComponentActivity() {
             Lab2Theme {
                 drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
                 scope = rememberCoroutineScope();
+                navController = rememberNavController();
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -79,10 +88,21 @@ class MainActivity : ComponentActivity() {
                                 )
                             }
                         ) {
-                            Text(
-                                text = "Screen content (Drawer composable body)",
+                            NavHost(
+                                navController = navController,
+                                startDestination = "home",
                                 modifier = Modifier.padding(it)
-                            )
+                            ) {
+                                composable("home") {
+                                    HomeScreen()
+                                }
+                                composable("gallery") {
+                                    GalleryScreen()
+                                }
+                                composable("slideshow") {
+                                    SlideshowScreen()
+                                }
+                            }
                         }
                     }
                 }
