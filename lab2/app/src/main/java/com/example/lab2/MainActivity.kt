@@ -3,6 +3,7 @@ package com.example.lab2
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -85,7 +86,16 @@ class MainActivity : ComponentActivity() {
                                         scope.launch { drawerState.close() }
                                     })
                                 NavigationDrawerItem(
-                                    label = { Text(text = "Gallery") },
+                                    label = {
+                                        Row {
+                                            Icon(
+                                                painter = painterResource(id = R.drawable.ic_menu_gallery),
+                                                contentDescription = "Gallery screen icon",
+                                                modifier = Modifier.padding(end = 12.dp)
+                                            )
+                                            Text(text = "Gallery")
+                                        }
+                                    },
                                     selected = currentRoute == "gallery",
                                     onClick = {
                                         navController.navigate("gallery") {
