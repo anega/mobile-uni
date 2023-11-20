@@ -182,7 +182,7 @@ class MainActivity : ComponentActivity() {
                         Scaffold(
                             topBar = {
                                 TopAppBar(
-                                    title = { Text(text = "TopAppBar") },
+                                    title = { Text(text = currentRoute.replaceFirstChar { it.uppercase() }) },
                                     modifier = Modifier.fillMaxWidth(),
                                     colors = TopAppBarDefaults.smallTopAppBarColors(
                                         containerColor = MaterialTheme.colorScheme.primaryContainer
