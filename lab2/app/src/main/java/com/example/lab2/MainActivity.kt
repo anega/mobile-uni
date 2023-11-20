@@ -105,7 +105,16 @@ class MainActivity : ComponentActivity() {
                                         scope.launch { drawerState.close() }
                                     })
                                 NavigationDrawerItem(
-                                    label = { Text(text = "Slideshow") },
+                                    label = {
+                                        Row {
+                                            Icon(
+                                                painter = painterResource(id = R.drawable.ic_menu_gallery),
+                                                contentDescription = "Gallery screen icon",
+                                                modifier = Modifier.padding(end = 12.dp)
+                                            )
+                                            Text(text = "Slideshow")
+                                        }
+                                    },
                                     selected = currentRoute == "slideshow",
                                     onClick = {
                                         navController.navigate("slideshow") {
