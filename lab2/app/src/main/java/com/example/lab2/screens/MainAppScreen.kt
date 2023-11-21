@@ -15,10 +15,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.activity
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.lab2.TabbedActivity
 import com.example.lab2.components.ApplicationDrawer
 import com.example.lab2.components.ApplicationTopBar
 import kotlinx.coroutines.CoroutineScope
@@ -71,6 +73,9 @@ fun MainAppScreen() {
                     }
                     composable("customscreen") {
                         MyCustomScreen()
+                    }
+                    activity(route = "tabbedactivity") {
+                        this.activityClass = TabbedActivity::class
                     }
                 }
             }
