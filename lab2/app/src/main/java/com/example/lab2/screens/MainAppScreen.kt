@@ -1,14 +1,11 @@
 package com.example.lab2.screens
 
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -34,49 +31,44 @@ fun MainAppScreen() {
     val currentNavBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = currentNavBackStackEntry?.destination?.route ?: "home"
 
-    Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
-    ) {
-        ModalNavigationDrawer(
-            drawerState = drawerState,
-            drawerContent = {
-                ApplicationDrawer(
-                    navController = navController,
+    ModalNavigationDrawer(
+        drawerState = drawerState,
+        drawerContent = {
+            ApplicationDrawer(
+                navController = navController,
+                currentRoute = currentRoute,
+                drawerState = drawerState,
+                scope = scope
+            )
+        }) {
+        Scaffold(
+            topBar = {
+                ApplicationTopBar(
                     currentRoute = currentRoute,
                     drawerState = drawerState,
                     scope = scope
                 )
-            }) {
-            Scaffold(
-                topBar = {
-                    ApplicationTopBar(
-                        currentRoute = currentRoute,
-                        drawerState = drawerState,
-                        scope = scope
-                    )
-                }
+            }
+        ) {
+            NavHost(
+                navController = navController,
+                startDestination = "home",
+                modifier = Modifier.padding(it)
             ) {
-                NavHost(
-                    navController = navController,
-                    startDestination = "home",
-                    modifier = Modifier.padding(it)
-                ) {
-                    composable("home") {
-                        HomeScreen()
-                    }
-                    composable("gallery") {
-                        GalleryScreen()
-                    }
-                    composable("slideshow") {
-                        SlideshowScreen()
-                    }
-                    composable("customscreen") {
-                        MyCustomScreen()
-                    }
-                    activity(route = "tabbedactivity") {
-                        this.activityClass = TabbedActivity::class
-                    }
+                composable("home") {
+                    HomeScreen()
+                }
+                composable("gallery") {
+                    GalleryScreen()
+                }
+                composable("slideshow") {
+                    SlideshowScreen()
+                }
+                composable("customScreen") {
+                    MyCustomScreen()
+                }
+                activity(route = "tabbedActivity") {
+                    this.activityClass = TabbedActivity::class
                 }
             }
         }

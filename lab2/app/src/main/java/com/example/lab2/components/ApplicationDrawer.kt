@@ -122,9 +122,9 @@ fun ApplicationDrawer(
                         Text(text = "My custom screen")
                     }
                 },
-                selected = currentRoute == "customscreen",
+                selected = currentRoute == "customScreen",
                 onClick = {
-                    navController.navigate("customscreen") {
+                    navController.navigate("customScreen") {
                         launchSingleTop = true
                         restoreState = true
                     }
@@ -141,7 +141,7 @@ fun ApplicationDrawer(
                         Text(text = "Tabbed activity")
                     }
                 },
-                selected = currentRoute == "tabbedactivity",
+                selected = currentRoute == "tabbedActivity",
                 onClick = {
                     scope.launch { drawerState.close() }
                     val intent = Intent(context, TabbedActivity::class.java)
