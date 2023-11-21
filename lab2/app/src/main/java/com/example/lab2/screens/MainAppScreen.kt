@@ -69,6 +69,9 @@ fun MainAppScreen() {
                     composable("slideshow") {
                         SlideshowScreen()
                     }
+                    composable("customscreen") {
+                        MyCustomScreen()
+                    }
                 }
             }
         }

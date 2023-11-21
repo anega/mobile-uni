@@ -104,6 +104,26 @@ fun ApplicationDrawer(
                     scope.launch { drawerState.close() }
                 }
             )
+            NavigationDrawerItem(
+                label = {
+                    Row {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_mosque),
+                            contentDescription = "My custom screen icon",
+                            modifier = Modifier.padding(end = 12.dp)
+                        )
+                        Text(text = "My custom screen")
+                    }
+                },
+                selected = currentRoute == "customscreen",
+                onClick = {
+                    navController.navigate("customscreen") {
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                    scope.launch { drawerState.close() }
+                }
+            )
         }
     }
 }
