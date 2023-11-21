@@ -6,6 +6,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.Tab
@@ -18,13 +19,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.example.lab2.screens.tabs.AnotherScreen
 import com.example.lab2.screens.tabs.ArchiveScreen
+import com.example.lab2.screens.tabs.MyCustomTabScreen
 import com.example.lab2.screens.tabs.PostScreen
 
 @Composable
 fun TabbedScreen() {
     var tabIndex by remember { mutableIntStateOf(0) }
 
-    val tabs = listOf("Posts", "Another", "Archive")
+    val tabs = listOf("Posts", "Another", "Archive", "My custom tab")
 
     Column(modifier = Modifier.fillMaxWidth()) {
         ScrollableTabRow(selectedTabIndex = tabIndex) {
@@ -39,15 +41,17 @@ fun TabbedScreen() {
                                 imageVector = Icons.Default.List,
                                 contentDescription = "Posts tab"
                             )
-
                             1 -> Icon(
                                 imageVector = Icons.Default.Info,
                                 contentDescription = "Another tab"
                             )
-
                             2 -> Icon(
                                 imageVector = Icons.Default.DateRange,
                                 contentDescription = "Archive tab"
+                            )
+                            3 -> Icon(
+                                imageVector = Icons.Default.Star,
+                                contentDescription = "My custom tab"
                             )
                         }
                     }
@@ -58,6 +62,7 @@ fun TabbedScreen() {
             0 -> PostScreen()
             1 -> AnotherScreen()
             2 -> ArchiveScreen()
+            3 -> MyCustomTabScreen()
         }
     }
 }
