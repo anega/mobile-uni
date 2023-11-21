@@ -1,5 +1,6 @@
 package com.example.lab2.components
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -10,6 +11,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -23,11 +26,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.lab2.R
+import com.example.lab2.TabbedActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -39,6 +44,8 @@ fun ApplicationDrawer(
     drawerState: DrawerState,
     scope: CoroutineScope
 ) {
+    val context = LocalContext.current
+
     ModalDrawerSheet {
         DrawerHeader()
         Column(
@@ -122,6 +129,23 @@ fun ApplicationDrawer(
                         restoreState = true
                     }
                     scope.launch { drawerState.close() }
+                }
+            )
+            NavigationDrawerItem(
+                label = {
+                    Row {
+                        Icon(
+                            imageVector = Icons.Default.MoreVert,
+                            contentDescription = "Go to tabbed activity"
+                        )
+                        Text(text = "Tabbed activity")
+                    }
+                },
+                selected = currentRoute == "tabbedactivity",
+                onClick = {
+                    scope.launch { drawerState.close() }
+                    val intent = Intent(context, TabbedActivity::class.java)
+                    context.startActivity(intent)
                 }
             )
         }
