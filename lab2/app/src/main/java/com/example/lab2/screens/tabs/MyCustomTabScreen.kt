@@ -27,6 +27,7 @@ fun MyCustomTabScreen() {
             modifier = Modifier.padding(16.dp),
             onClick = {
                 val intent = Intent(context, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 context.startActivity(intent)
             }
         ) {
