@@ -20,6 +20,10 @@ import androidx.navigation.compose.rememberNavController
 import com.example.lab2.TabbedActivity
 import com.example.lab2.components.ApplicationDrawer
 import com.example.lab2.components.ApplicationTopBar
+import com.example.lab2.screens.drawers.GalleryScreen
+import com.example.lab2.screens.drawers.HomeScreen
+import com.example.lab2.screens.drawers.MyCustomScreen
+import com.example.lab2.screens.drawers.SlideshowScreen
 import kotlinx.coroutines.CoroutineScope
 
 @OptIn(ExperimentalMaterial3Api::class)

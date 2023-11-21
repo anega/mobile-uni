@@ -1,4 +1,4 @@
-package com.example.lab2.screens
+package com.example.lab2.screens.drawers
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -9,13 +9,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun MyCustomScreen() {
+fun GalleryScreen() {
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
     ) {
-        Text(text = "My custom screen")
+        Text(text = "Gallery screen")
     }
 }
