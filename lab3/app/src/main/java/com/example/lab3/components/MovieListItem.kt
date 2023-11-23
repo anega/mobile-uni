@@ -3,6 +3,7 @@ package com.example.lab3.components
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -10,6 +11,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -30,36 +32,39 @@ fun MovieListItem(item: Movie) {
     ElevatedCard(
         shape = RoundedCornerShape(4.dp),
         elevation = CardDefaults.cardElevation(
-            defaultElevation = 6.dp
-        ),
+            defaultElevation = 4.dp
+        )
     ) {
         Row {
-            AsyncImage(
-                model = item.posterPath,
-                placeholder = painterResource(id = R.drawable.ic_videocam),
-                error = painterResource(id = R.drawable.ic_videocam),
-                contentDescription = item.title,
-                contentScale = ContentScale.FillBounds,
-                modifier = Modifier.width(94.dp)
-            )
+            Box {
+                AsyncImage(
+                    model = item.posterPath,
+                    placeholder = painterResource(id = R.drawable.ic_videocam),
+                    error = painterResource(id = R.drawable.ic_videocam),
+                    contentDescription = item.title,
+                    contentScale = ContentScale.FillHeight,
+                    modifier = Modifier
+                        .width(94.dp)
+                        .fillMaxHeight()
+                )
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_videocam),
+                    contentDescription = "Movie icon",
+                    tint = MaterialTheme.colorScheme.primaryContainer,
+                    modifier = Modifier.offset(x = 4.dp)
+                )
+            }
             Column(
                 modifier = Modifier.padding(horizontal = 12.dp, vertical = 20.dp)
             ) {
-                Box {
-                    Text(
-                        text = item.title,
-                        color = Color.Black,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(end = 20.dp, bottom = 4.dp)
-                    )
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_videocam),
-                        contentDescription = "Movie icon",
-                        tint = Color(0xFF999999),
-                        modifier = Modifier.offset(x = 250.dp, y = (-10).dp)
-                    )
-                }
+                Text(
+                    text = item.title,
+                    color = Color.Black,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
                 Text(
                     text = item.releaseDate,
                     color = Color(0xFF999999),
