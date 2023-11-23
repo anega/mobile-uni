@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.lab3.R
-import com.example.lab3.models.Movie
+import com.example.lab3.models.Data.Movie
 
 @Composable
 fun MovieListItem(item: Movie) {

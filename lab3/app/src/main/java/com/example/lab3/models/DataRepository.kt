@@ -1,7 +1,10 @@
 package com.example.lab3.models
 
-class MovieRepository {
-    fun getAllMovies(): List<Movie> {
+import com.example.lab3.models.Data.Movie
+import com.example.lab3.models.Data.Person
+
+class DataRepository {
+    fun getData(): List<Any> {
         return listOf(
             Movie(
                 id = 1075794,
@@ -12,6 +15,24 @@ class MovieRepository {
                 releaseDate = "2023-11-11",
                 voteAverage = 7.18,
                 voteCount = 25
+            ),
+            Person(
+                id = 1373659,
+                name = "Melissa Barrera",
+                profilePath = "/kJMecAOP5DEhJEQ6ScM23MfKPn3.jpg",
+                mediaType = "person",
+                gender = "female",
+                knownForDepartment = "Acting",
+                knownFor = arrayOf("Scream", "Scream VI", "Bed Rest")
+            ),
+            Person(
+                id = 2963,
+                name = "Nicolas Cage",
+                profilePath = "/ar33qcWbEgREn07ZpXv5Pbj8hbM.jpg",
+                mediaType = "person",
+                gender = "male",
+                knownForDepartment = "Acting",
+                knownFor = arrayOf("The Croods", "National Treasure", "Ghost Rider")
             ),
             Movie(
                 id = 872585,
@@ -33,6 +54,15 @@ class MovieRepository {
                 voteAverage = 6.508,
                 voteCount = 60
             ),
+            Person(
+                id = 138,
+                name = "Quentin Tarantino",
+                profilePath = "/1gjcpAa99FAOWGnrUvHEXXsRs7o.jpg",
+                mediaType = "person",
+                gender = "male",
+                knownForDepartment = "Directing",
+                knownFor = arrayOf("Pulp Fiction", "Django Unchained", "Inglourious Basterds")
+            ),
             Movie(
                 id = 695721,
                 posterPath = "https://image.tmdb.org/t/p/w342/mBaXZ95R2OxueZhvQbcEWy2DqyO.jpg",
@@ -43,6 +73,33 @@ class MovieRepository {
                 voteAverage = 7.238,
                 voteCount = 294
             ),
+            Person(
+                id = 1311463,
+                name = "Francisco Payó González",
+                profilePath = null,
+                mediaType = "person",
+                gender = "male",
+                knownForDepartment = "Writing",
+                knownFor = arrayOf("Saving Private Pérez", "Cinderello", "Flying low")
+            ),
+            Person(
+                id = 1622390,
+                name = "Lee Chae-dam",
+                profilePath = "/7wMyr6F3yzvbSpu2XMxSW3vObED.jpg",
+                mediaType = "person",
+                gender = "female",
+                knownForDepartment = "Acting",
+                knownFor = arrayOf("My Wife's Sister", "Mother's Job", "Swapping: A Divorce Trip Between Two Couples")
+            ),
+            Person(
+                id = 500,
+                name = "Tom Cruise",
+                profilePath = "/eOh4ubpOm2Igdg0QH2ghj0mFtC.jpg",
+                mediaType = "person",
+                gender = "male",
+                knownForDepartment = "Acting",
+                knownFor = arrayOf("Edge of Tomorrow", "Oblivion", "Mission: Impossible - Ghost Protocol")
+            ),
             Movie(
                 id = 670292,
                 posterPath = "https://image.tmdb.org/t/p/w342/vBZ0qvaRxqEhZwl6LWmruJqWE8Z.jpg",
@@ -52,6 +109,15 @@ class MovieRepository {
                 releaseDate = "2023-09-27",
                 voteAverage = 7.218,
                 voteCount = 985
+            ),
+            Person(
+                id = 1708576,
+                name = "Ahn So-hee",
+                profilePath = "/q6DJet94KucWTMFxpsQvPPYSf82.jpg",
+                mediaType = "person",
+                gender = "female",
+                knownForDepartment = "Acting",
+                knownFor = arrayOf("Prostitution", "What Happened at the Carpenter's Shop", "Young Mother: The Original")
             ),
             Movie(
                 id = 798362,
@@ -93,6 +159,33 @@ class MovieRepository {
                 voteAverage = 7.5,
                 voteCount = 13
             ),
+            Person(
+                id = 18897,
+                name = "Jackie Chan",
+                profilePath = "/nraZoTzwJQPHspAVsKfgl3RXKKa.jpg",
+                mediaType = "person",
+                gender = "male",
+                knownForDepartment = "Acting",
+                knownFor = arrayOf("Rush Hour", "Rush Hour 2", "Rush Hour 3")
+            ),
+            Person(
+                id = 976,
+                name = "Jason Statham",
+                profilePath = "/whNwkEQYWLFJA8ij0WyOOAD5xhQ.jpg",
+                mediaType = "person",
+                gender = "male",
+                knownForDepartment = "Acting",
+                knownFor = arrayOf("Snatch", "The Meg", "The Transporter")
+            ),
+            Person(
+                id = 5292,
+                name = "Denzel Washington",
+                profilePath = "/jj2Gcobpopokal0YstuCQW0ldJ4.jpg",
+                mediaType = "person",
+                gender = "male",
+                knownForDepartment = "Acting",
+                knownFor = arrayOf("The Equalizer", "The Book of Eli", "Flight")
+            ),
             Movie(
                 id = 507089,
                 posterPath = "https://image.tmdb.org/t/p/w342/j9mH1pr3IahtraTWxVEMANmPSGR.jpg",
@@ -102,7 +195,61 @@ class MovieRepository {
                 releaseDate = "2023-10-25",
                 voteAverage = 7.901,
                 voteCount = 2410
+            ),
+            Person(
+                id = 1336,
+                name = "Jet Li",
+                profilePath = "/c4s8INzU0ZAujCQ1YmphCmcsNzl.jpg",
+                mediaType = "person",
+                gender = "male",
+                knownForDepartment = "Acting",
+                knownFor = arrayOf("The Expendables", "The Expendables 2", "The Mummy: Tomb of the Dragon Emperor")
+            ),
+            Person(
+                id = 3292,
+                name = "Nicholas Hoult",
+                profilePath = "/laeAYQVBV9U3DkJ1B4Cn1XhpT8P.jpg",
+                mediaType = "person",
+                gender = "male",
+                knownForDepartment = "Acting",
+                knownFor = arrayOf("Mad Max: Fury Road", "Warm Bodies", "X-Men: Apocalypse")
+            ),
+            Person(
+                id = 974169,
+                name = "Jenna Ortega",
+                profilePath = "/q1NRzyZQlYkxLY07GO9NVPkQnu8.jpg",
+                mediaType = "person",
+                gender = "female",
+                knownForDepartment = "Acting",
+                knownFor = arrayOf("Wednesday", "Scream", "X")
+            ),
+            Person(
+                id = 5655,
+                name = "Wes Anderson",
+                profilePath = "/5z2WroP0CgQ5vI17M0hzi8o5NAn.jpg",
+                mediaType = "person",
+                gender = "male",
+                knownForDepartment = "Directing",
+                knownFor = arrayOf("The Grand Budapest Hotel", "Moonrise Kingdom", "Fantastic Mr. Fox")
+            ),
+            Person(
+                id = 1814668,
+                name = "James L. Heyward",
+                profilePath = null,
+                mediaType = "person",
+                gender = "male",
+                knownForDepartment = "Directing",
+                knownFor = arrayOf("Outer Banks", "The System", "Sophie and the Rising Sun")
+            ),
+            Person(
+                id = 19292,
+                name = "Adam Sandler",
+                profilePath = "/hf5NHpMg8o9zGRHVNgNSl1re6AY.jpg",
+                mediaType = "person",
+                gender = "male",
+                knownForDepartment = "Acting",
+                knownFor = arrayOf("Hotel Transylvania", "Pixels", "50 First Dates")
             )
-        );
+        )
     }
 }
