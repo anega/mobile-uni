@@ -65,7 +65,6 @@ fun PersonListItem(item: Person) {
                         .height(80.dp)
                         .clip(CircleShape)
                         .background(MaterialTheme.colorScheme.primaryContainer)
-                        .padding(8.dp)
                 )
                 Text(
                     text = item.name,
