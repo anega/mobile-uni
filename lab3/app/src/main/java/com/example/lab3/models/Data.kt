@@ -20,7 +20,7 @@ sealed class Data {
         val gender: String,
         val knownForDepartment: String,
         val knownFor: Array<String>
-    ) {
+    ): Data() {
         override fun equals(other: Any?): Boolean {
             if (this === other) return true
             if (javaClass != other?.javaClass) return false
