@@ -19,7 +19,7 @@ class DataRepository {
             Person(
                 id = 1373659,
                 name = "Melissa Barrera",
-                profilePath = "/kJMecAOP5DEhJEQ6ScM23MfKPn3.jpg",
+                profilePath = "https://image.tmdb.org/t/p/w342/kJMecAOP5DEhJEQ6ScM23MfKPn3.jpg",
                 mediaType = "person",
                 gender = "female",
                 knownForDepartment = "Acting",
@@ -28,7 +28,7 @@ class DataRepository {
             Person(
                 id = 2963,
                 name = "Nicolas Cage",
-                profilePath = "/ar33qcWbEgREn07ZpXv5Pbj8hbM.jpg",
+                profilePath = "https://image.tmdb.org/t/p/w342/ar33qcWbEgREn07ZpXv5Pbj8hbM.jpg",
                 mediaType = "person",
                 gender = "male",
                 knownForDepartment = "Acting",
@@ -57,7 +57,7 @@ class DataRepository {
             Person(
                 id = 138,
                 name = "Quentin Tarantino",
-                profilePath = "/1gjcpAa99FAOWGnrUvHEXXsRs7o.jpg",
+                profilePath = "https://image.tmdb.org/t/p/w342/1gjcpAa99FAOWGnrUvHEXXsRs7o.jpg",
                 mediaType = "person",
                 gender = "male",
                 knownForDepartment = "Directing",
@@ -85,7 +85,7 @@ class DataRepository {
             Person(
                 id = 1622390,
                 name = "Lee Chae-dam",
-                profilePath = "/7wMyr6F3yzvbSpu2XMxSW3vObED.jpg",
+                profilePath = "https://image.tmdb.org/t/p/w342/7wMyr6F3yzvbSpu2XMxSW3vObED.jpg",
                 mediaType = "person",
                 gender = "female",
                 knownForDepartment = "Acting",
@@ -94,7 +94,7 @@ class DataRepository {
             Person(
                 id = 500,
                 name = "Tom Cruise",
-                profilePath = "/eOh4ubpOm2Igdg0QH2ghj0mFtC.jpg",
+                profilePath = "https://image.tmdb.org/t/p/w342/eOh4ubpOm2Igdg0QH2ghj0mFtC.jpg",
                 mediaType = "person",
                 gender = "male",
                 knownForDepartment = "Acting",
@@ -113,7 +113,7 @@ class DataRepository {
             Person(
                 id = 1708576,
                 name = "Ahn So-hee",
-                profilePath = "/q6DJet94KucWTMFxpsQvPPYSf82.jpg",
+                profilePath = "https://image.tmdb.org/t/p/w342/q6DJet94KucWTMFxpsQvPPYSf82.jpg",
                 mediaType = "person",
                 gender = "female",
                 knownForDepartment = "Acting",
@@ -162,7 +162,7 @@ class DataRepository {
             Person(
                 id = 18897,
                 name = "Jackie Chan",
-                profilePath = "/nraZoTzwJQPHspAVsKfgl3RXKKa.jpg",
+                profilePath = "https://image.tmdb.org/t/p/w342/nraZoTzwJQPHspAVsKfgl3RXKKa.jpg",
                 mediaType = "person",
                 gender = "male",
                 knownForDepartment = "Acting",
@@ -171,7 +171,7 @@ class DataRepository {
             Person(
                 id = 976,
                 name = "Jason Statham",
-                profilePath = "/whNwkEQYWLFJA8ij0WyOOAD5xhQ.jpg",
+                profilePath = "https://image.tmdb.org/t/p/w342/whNwkEQYWLFJA8ij0WyOOAD5xhQ.jpg",
                 mediaType = "person",
                 gender = "male",
                 knownForDepartment = "Acting",
@@ -180,7 +180,7 @@ class DataRepository {
             Person(
                 id = 5292,
                 name = "Denzel Washington",
-                profilePath = "/jj2Gcobpopokal0YstuCQW0ldJ4.jpg",
+                profilePath = "https://image.tmdb.org/t/p/w342/jj2Gcobpopokal0YstuCQW0ldJ4.jpg",
                 mediaType = "person",
                 gender = "male",
                 knownForDepartment = "Acting",
@@ -199,7 +199,7 @@ class DataRepository {
             Person(
                 id = 1336,
                 name = "Jet Li",
-                profilePath = "/c4s8INzU0ZAujCQ1YmphCmcsNzl.jpg",
+                profilePath = "https://image.tmdb.org/t/p/w342/c4s8INzU0ZAujCQ1YmphCmcsNzl.jpg",
                 mediaType = "person",
                 gender = "male",
                 knownForDepartment = "Acting",
@@ -208,7 +208,7 @@ class DataRepository {
             Person(
                 id = 3292,
                 name = "Nicholas Hoult",
-                profilePath = "/laeAYQVBV9U3DkJ1B4Cn1XhpT8P.jpg",
+                profilePath = "https://image.tmdb.org/t/p/w342/laeAYQVBV9U3DkJ1B4Cn1XhpT8P.jpg",
                 mediaType = "person",
                 gender = "male",
                 knownForDepartment = "Acting",
@@ -217,7 +217,7 @@ class DataRepository {
             Person(
                 id = 974169,
                 name = "Jenna Ortega",
-                profilePath = "/q1NRzyZQlYkxLY07GO9NVPkQnu8.jpg",
+                profilePath = "https://image.tmdb.org/t/p/w342/q1NRzyZQlYkxLY07GO9NVPkQnu8.jpg",
                 mediaType = "person",
                 gender = "female",
                 knownForDepartment = "Acting",
@@ -226,7 +226,7 @@ class DataRepository {
             Person(
                 id = 5655,
                 name = "Wes Anderson",
-                profilePath = "/5z2WroP0CgQ5vI17M0hzi8o5NAn.jpg",
+                profilePath = "https://image.tmdb.org/t/p/w342/5z2WroP0CgQ5vI17M0hzi8o5NAn.jpg",
                 mediaType = "person",
                 gender = "male",
                 knownForDepartment = "Directing",
@@ -244,7 +244,7 @@ class DataRepository {
             Person(
                 id = 19292,
                 name = "Adam Sandler",
-                profilePath = "/hf5NHpMg8o9zGRHVNgNSl1re6AY.jpg",
+                profilePath = "https://image.tmdb.org/t/p/w342/hf5NHpMg8o9zGRHVNgNSl1re6AY.jpg",
                 mediaType = "person",
                 gender = "male",
                 knownForDepartment = "Acting",
