@@ -4,7 +4,7 @@ import com.example.lab3.models.Data.Movie
 import com.example.lab3.models.Data.Person
 
 class DataRepository {
-    fun getData(): List<Any> {
+    fun getData(): List<Data> {
         return listOf(
             Movie(
                 id = 1075794,
