@@ -1,12 +1,15 @@
 package com.example.lab4.data.models
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "movies")
 data class Movie(
-    val id: Int,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int? = null,
     val posterPath: String,
     val title: String,
     val overview: String,
-//    val mediaType: String,
     val releaseDate: String,
-    val voteAverage: Double,
-//    val voteCount: Int
+    val voteAverage: Double
 )
