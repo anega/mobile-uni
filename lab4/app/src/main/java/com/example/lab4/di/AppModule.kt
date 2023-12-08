@@ -1,7 +1,6 @@
 package com.example.lab4.di
 
 import android.app.Application
-import android.content.Context
 import androidx.room.Room
 import com.example.lab4.data.MoviesDatabase
 import com.example.lab4.data.MoviesRepository
