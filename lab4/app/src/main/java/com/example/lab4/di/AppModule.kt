@@ -19,6 +19,7 @@ object AppModule {
     fun providesMoviesDatabase(app: Application): MoviesDatabase {
         return Room
             .databaseBuilder(app, MoviesDatabase::class.java, "movies_db")
+            .createFromAsset("database/lab4.db")
             .build()
     }
 
