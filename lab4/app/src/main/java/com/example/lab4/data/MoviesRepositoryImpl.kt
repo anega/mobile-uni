@@ -9,4 +9,8 @@ class MoviesRepositoryImpl(
     override fun getAllMovies(): Flow<List<Movie>> {
         return dao.getAllMovies()
     }
+
+    override suspend fun addMovie(movie: Movie) {
+        dao.addMovie(movie)
+    }
 }
