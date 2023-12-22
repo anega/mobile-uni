@@ -15,6 +15,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -28,17 +29,25 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.example.lab4.R
 import com.example.lab4.data.models.Movie
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MovieListItem(item: Movie) {
+fun MovieListItem(
+    item: Movie,
+    navController: NavHostController
+) {
     ElevatedCard(
         shape = RoundedCornerShape(4.dp),
         elevation = CardDefaults.cardElevation(
             defaultElevation = 4.dp
-        )
+        ),
+        onClick = {
+            navController.navigate(route = "movie/${item.id}")
+        }
     ) {
         Row {
             Box {
