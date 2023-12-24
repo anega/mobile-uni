@@ -10,6 +10,10 @@ class MoviesRepositoryImpl(
         return dao.getAllMovies()
     }
 
+    override suspend fun getMovieById(id: Int): Movie? {
+        return dao.getMovieById(id)
+    }
+
     override suspend fun addMovie(movie: Movie) {
         dao.addMovie(movie)
     }
