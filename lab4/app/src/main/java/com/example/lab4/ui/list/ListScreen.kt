@@ -10,6 +10,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
@@ -19,7 +20,7 @@ fun ListScreen(
     viewModel: ListViewModel = hiltViewModel(),
     navController: NavHostController
 ) {
-    val movies = viewModel.movies.collectAsState(initial = emptyList())
+    val movies by viewModel.movies.collectAsState()
 
     Scaffold(
         floatingActionButton = {
@@ -39,7 +40,7 @@ fun ListScreen(
             contentPadding = paddingValues,
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            items(items = movies.value) { item ->
+            items(items = movies) { item ->
                 MovieListItem(item = item, navController = navController)
             }
         }
