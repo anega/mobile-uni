@@ -28,7 +28,7 @@ fun Navigation(
                 type = NavType.IntType
             })
         ) {
-            MovieScreen(navController = navController)
+            MovieScreen()
         }
     }
 }
