@@ -14,6 +14,10 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
@@ -62,7 +66,12 @@ class MovieViewModel @Inject constructor(
             is AddEditMovieEvent.OnTitleChange -> title = event.title
             is AddEditMovieEvent.OnPosterPathChange -> posterPath = event.posterPath
             is AddEditMovieEvent.OnOverviewChange -> overview = event.overview
-            is AddEditMovieEvent.OnReleaseDateChange -> releaseDate = event.releaseDate
+            is AddEditMovieEvent.OnReleaseDateChange -> {
+                val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                val calendar = Calendar.getInstance()
+                calendar.timeInMillis = event.releaseDate
+                releaseDate = formatter.format(calendar.time).toString()
+            }
             is AddEditMovieEvent.OnVoteAverageChange -> voteAverage = event.voteAverage
             is AddEditMovieEvent.OnSaveMovie -> {
                 viewModelScope.launch {
