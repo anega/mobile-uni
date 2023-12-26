@@ -8,7 +8,11 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.lab4.data.MoviesRepository
+import com.example.lab4.data.models.Movie
+import com.example.lab4.ui.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -17,7 +21,7 @@ class MovieViewModel @Inject constructor(
     private val repository: MoviesRepository,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
-    var id by mutableIntStateOf(0)
+    var id by mutableIntStateOf(-1)
         private set
     var title by mutableStateOf("")
         private set
@@ -31,6 +35,9 @@ class MovieViewModel @Inject constructor(
         private set
     var screenTitle by mutableStateOf("New Movie")
         private set
+
+    private val _uiEvent = MutableSharedFlow<UiEvent>()
+    val uiEvent = _uiEvent.asSharedFlow()
 
     init {
         viewModelScope.launch {
@@ -51,11 +58,43 @@ class MovieViewModel @Inject constructor(
 
     fun onEvent(event: AddEditMovieEvent) {
         when (event) {
+            is AddEditMovieEvent.OnIdChange -> id = event.id
             is AddEditMovieEvent.OnTitleChange -> title = event.title
             is AddEditMovieEvent.OnPosterPathChange -> posterPath = event.posterPath
             is AddEditMovieEvent.OnOverviewChange -> overview = event.overview
             is AddEditMovieEvent.OnReleaseDateChange -> releaseDate = event.releaseDate
             is AddEditMovieEvent.OnVoteAverageChange -> voteAverage = event.voteAverage
+            is AddEditMovieEvent.OnSaveMovie -> {
+                viewModelScope.launch {
+                    val currentMovie: Movie
+                    if (id == -1) {
+                        currentMovie = Movie(
+                            title = title,
+                            posterPath = posterPath,
+                            overview = overview,
+                            releaseDate = releaseDate,
+                            voteAverage = voteAverage.toDouble()
+                        )
+                    } else {
+                        currentMovie = Movie(
+                            id = id,
+                            title = title,
+                            posterPath = posterPath,
+                            overview = overview,
+                            releaseDate = releaseDate,
+                            voteAverage = voteAverage.toDouble()
+                        )
+                    }
+                    repository.addMovie(currentMovie)
+                    onUiEvent(UiEvent.PopBackStack)
+                }
+            }
+        }
+    }
+
+    private fun onUiEvent(event: UiEvent) {
+        viewModelScope.launch {
+            _uiEvent.emit(event)
         }
     }
 }
