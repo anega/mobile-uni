@@ -37,7 +37,7 @@ fun MovieScreen(
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
-                onClick = {}
+                onClick = { viewModel.onEvent(AddEditMovieEvent.OnSaveMovie) }
             ) {
                 Icon(
                     imageVector = Icons.Default.Done,
