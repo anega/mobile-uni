@@ -15,6 +15,9 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberDatePickerState
@@ -38,6 +41,7 @@ fun MovieScreen(
     navController: NavHostController,
     viewModel: MovieViewModel = hiltViewModel()
 ) {
+    val snackBarHostState = remember { SnackbarHostState() }
     var openDialog by remember { mutableStateOf(false) }
     val datePickerState = rememberDatePickerState()
     val confirmEnabled = remember {
@@ -47,12 +51,17 @@ fun MovieScreen(
     LaunchedEffect(key1 = true) {
         viewModel.uiEvent.collect { event ->
             when (event) {
-                UiEvent.PopBackStack -> navController.popBackStack()
+                is UiEvent.PopBackStack -> navController.popBackStack()
+                is UiEvent.ShowSnackBar -> snackBarHostState.showSnackbar(
+                    message = event.message,
+                    duration = SnackbarDuration.Long
+                )
             }
         }
     }
 
     Scaffold(
+        snackbarHost = { SnackbarHost(hostState = snackBarHostState) },
         floatingActionButton = {
             FloatingActionButton(
                 onClick = { viewModel.onEvent(AddEditMovieEvent.OnSaveMovie) }

@@ -16,7 +16,6 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.Date
 import java.util.Locale
 import javax.inject.Inject
 
@@ -76,6 +75,14 @@ class MovieViewModel @Inject constructor(
             is AddEditMovieEvent.OnSaveMovie -> {
                 viewModelScope.launch {
                     val currentMovie: Movie
+                    if (title.isBlank() ||
+                        posterPath.isBlank() ||
+                        overview.isBlank() ||
+                        releaseDate.isBlank() ||
+                        voteAverage.isBlank()) {
+                        onUiEvent(UiEvent.ShowSnackBar(message = "Please fill in all fields"))
+                        return@launch
+                    }
                     if (id == -1) {
                         currentMovie = Movie(
                             title = title,
