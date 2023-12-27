@@ -25,4 +25,14 @@ class ListViewModel @Inject constructor(
         }
     }
 
+    fun onEvent(event: ListMoviesEvent) {
+        when (event) {
+            is ListMoviesEvent.OnDeleteMovie -> {
+                viewModelScope.launch {
+                    repository.deleteMovie(event.movie)
+                }
+            }
+        }
+    }
+
 }
