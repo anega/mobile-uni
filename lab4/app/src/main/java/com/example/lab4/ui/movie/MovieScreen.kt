@@ -1,5 +1,6 @@
 package com.example.lab4.ui.movie
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -73,88 +74,94 @@ fun MovieScreen(
             }
         }
     ) { paddingValues ->
-        Column(
+        Box(
             modifier = Modifier.padding(paddingValues)
         ) {
-            Text(
-                text = viewModel.screenTitle,
-                style = MaterialTheme.typography.headlineSmall
-            )
-            Spacer(modifier = Modifier.height(12.dp))
-            OutlinedTextField(
-                value = viewModel.title,
-                label = { Text(text = "Title") },
-                singleLine = true,
-                onValueChange = {
-                    viewModel.onEvent(AddEditMovieEvent.OnTitleChange(it))
-                },
-                modifier = Modifier.fillMaxWidth()
-            )
-            OutlinedTextField(
-                value = viewModel.posterPath,
-                label = { Text(text = "Poster URL") },
-                singleLine = true,
-                onValueChange = {
-                    viewModel.onEvent(AddEditMovieEvent.OnPosterPathChange(it))
-                },
-                modifier = Modifier.fillMaxWidth()
-            )
-            OutlinedTextField(
-                value = viewModel.overview,
-                label = { Text(text = "Overview") },
-                onValueChange = {
-                    viewModel.onEvent(AddEditMovieEvent.OnOverviewChange(it))
-                },
-                modifier = Modifier.fillMaxWidth()
-            )
-            if (openDialog) {
-                DatePickerDialog(
-                    onDismissRequest = { openDialog = false },
-                    confirmButton = {
-                        TextButton(
-                            onClick = {
-                                viewModel
-                                    .onEvent(AddEditMovieEvent.OnReleaseDateChange(datePickerState.selectedDateMillis!!))
-                                openDialog = false
-                            },
-                            enabled = confirmEnabled.value
-                        ) {
-                            Text("OK")
-                        }
+            Column(modifier = Modifier.padding(all = 12.dp)) {
+                Text(
+                    text = viewModel.screenTitle,
+                    style = MaterialTheme.typography.headlineSmall
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                OutlinedTextField(
+                    value = viewModel.title,
+                    label = { Text(text = "Title") },
+                    singleLine = true,
+                    onValueChange = {
+                        viewModel.onEvent(AddEditMovieEvent.OnTitleChange(it))
                     },
-                    dismissButton = {
-                        TextButton(
-                            onClick = { openDialog = false }
-                        ) {
-                            Text("Cancel")
+                    modifier = Modifier.fillMaxWidth()
+                )
+                OutlinedTextField(
+                    value = viewModel.posterPath,
+                    label = { Text(text = "Poster URL") },
+                    singleLine = true,
+                    onValueChange = {
+                        viewModel.onEvent(AddEditMovieEvent.OnPosterPathChange(it))
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                )
+                OutlinedTextField(
+                    value = viewModel.overview,
+                    label = { Text(text = "Overview") },
+                    onValueChange = {
+                        viewModel.onEvent(AddEditMovieEvent.OnOverviewChange(it))
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                )
+                if (openDialog) {
+                    DatePickerDialog(
+                        onDismissRequest = { openDialog = false },
+                        confirmButton = {
+                            TextButton(
+                                onClick = {
+                                    viewModel
+                                        .onEvent(
+                                            AddEditMovieEvent.OnReleaseDateChange(
+                                                datePickerState.selectedDateMillis!!
+                                            )
+                                        )
+                                    openDialog = false
+                                },
+                                enabled = confirmEnabled.value
+                            ) {
+                                Text("OK")
+                            }
+                        },
+                        dismissButton = {
+                            TextButton(
+                                onClick = { openDialog = false }
+                            ) {
+                                Text("Cancel")
+                            }
                         }
+                    ) {
+                        DatePicker(state = datePickerState)
                     }
-                ) {
-                    DatePicker(state = datePickerState)
                 }
-            }
-            OutlinedTextField(
-                value = viewModel.releaseDate,
-                onValueChange = {},
-                Modifier
-                    .fillMaxWidth()
-                    .onFocusEvent {
-                        if (it.isFocused) {
-                            openDialog = true
-                        }
+                OutlinedTextField(
+                    value = viewModel.releaseDate,
+                    onValueChange = {},
+                    Modifier
+                        .fillMaxWidth()
+                        .onFocusEvent {
+                            if (it.isFocused) {
+                                openDialog = true
+                            }
+                        },
+                    label = { Text("Date") },
+                    readOnly = true
+                )
+                OutlinedTextField(
+                    value = viewModel.voteAverage,
+                    label = { Text(text = "Average score") },
+                    singleLine = true,
+                    onValueChange = {
+                        viewModel.onEvent(AddEditMovieEvent.OnVoteAverageChange(it))
                     },
-                label = { Text("Date") },
-                readOnly = true
-            )
-            OutlinedTextField(
-                value = viewModel.voteAverage,
-                label = { Text(text = "Average score") },
-                singleLine = true,
-                onValueChange = {
-                    viewModel.onEvent(AddEditMovieEvent.OnVoteAverageChange(it))
-                },
-                modifier = Modifier.fillMaxWidth()
-            )
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
         }
     }
 }
