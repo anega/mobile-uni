@@ -4,7 +4,7 @@ import com.example.lab5.BuildConfig
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface MovieApi {
+interface MoviesApi {
     @GET("movie/popular?api_key=${BuildConfig.TMDB_APIKEY}&language=en-US")
     suspend fun getMovies(
         @Query("page") page: Int
