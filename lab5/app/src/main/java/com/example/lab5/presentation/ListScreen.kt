@@ -14,16 +14,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.LoadState
-import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
-import com.example.lab5.domain.model.Movie
 
 @Composable
 fun ListScreen(
-    movies: LazyPagingItems<Movie>
+    viewModel: MoviesListViewModel = hiltViewModel(),
 ) {
+    val movies = viewModel.movies.collectAsLazyPagingItems()
     val context = LocalContext.current
+
     LaunchedEffect(key1 = movies.loadState) {
         if (movies.loadState.refresh is LoadState.Error) {
             Toast.makeText(
@@ -49,7 +51,7 @@ fun ListScreen(
                     key = movies.itemKey { movie -> movie.id }
                 ) { index ->
                     val movie = movies[index]
-                    MovieListItem(item = movie!!)
+                    movie?.let { MovieListItem(item = it) }
                 }
 
                 item {

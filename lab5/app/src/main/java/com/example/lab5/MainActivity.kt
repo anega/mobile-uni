@@ -7,10 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.lab5.presentation.ListScreen
-import com.example.lab5.presentation.MoviesListViewModel
 import com.example.lab5.ui.theme.Lab5Theme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,10 +21,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val viewModel = hiltViewModel<MoviesListViewModel>()
-                    val movies = viewModel.movies.collectAsLazyPagingItems()
-
-                    ListScreen(movies = movies)
+                    ListScreen()
                 }
             }
         }
