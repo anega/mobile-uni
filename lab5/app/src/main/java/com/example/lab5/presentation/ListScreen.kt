@@ -43,8 +43,8 @@ fun ListScreen(
             )
         } else {
             LazyColumn(
-                verticalArrangement = Arrangement.spacedBy(12.dp),
-                modifier = Modifier.padding(all = 12.dp)
+                contentPadding = PaddingValues(all = 12.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 items(
                     count = movies.itemCount,
